@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Restaurants from '../components/Restaurants';
+import Restaurants from '../components/restaurants/Restaurants';
 import TopRestaurants from "../components/TopRestaurants";
 import {colors} from "../utils/colors";
 
