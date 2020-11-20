@@ -5,8 +5,10 @@ import { colors } from "../../utils/colors";
 import { firebaseApp } from '../../utils/firebase.js';
 import firebase from 'firebase/app';
 
-export default function Restaurants() {
+export default function Restaurants(props) {
     const [ user, setUser ]= useState(null);
+    const {navigation} = props;
+
     useEffect(()=> {
         firebase.auth().onAuthStateChanged((userInfo)=> {
             setUser(userInfo);
@@ -16,13 +18,16 @@ export default function Restaurants() {
     return (
         <View style={styles.body}>
             <Text>Restaurants..</Text>
-            {user && (
+            {!user && (
                 <Icon
                     type="material-community"
                     name='plus'
                     color={colors.primary}
                     reverse={true}
                     containerStyle={styles.addButton}
+                    onPress={() => {
+                        navigation.navigate('addRestaurants')
+                    }}
                 />
             )}
         </View>
